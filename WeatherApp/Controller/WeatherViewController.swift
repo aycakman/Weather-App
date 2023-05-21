@@ -6,7 +6,8 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController, WeatherManagerDelegate {
+
 
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
@@ -18,7 +19,7 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        weatherManager.delegate = self
         searchtextField.delegate = self
     }
    
@@ -28,6 +29,11 @@ class WeatherViewController: UIViewController {
         print(searchtextField.text!)
 
     }
+    
+    func didUpdateWeather(weatherModel: WeatherModel) {
+        print(weatherModel.temperatureString)
+    }
+    
 }
 
 
