@@ -9,7 +9,8 @@ import Foundation
 
 //delegate pattern
 protocol WeatherManagerDelegate {
-    func didUpdateWeather(weatherModel: WeatherModel)
+    func didUpdateWeather(_ weatherManager: WeatherManager, weatherModel: WeatherModel)
+    func didFailWithError(error: Error)
 }
 
 struct WeatherManager {
@@ -20,22 +21,23 @@ struct WeatherManager {
     func fetchWeather(cityName: String) {
         let urlString = "\(weatherURL)&q=\(cityName)"
         print(urlString)
-        performRequest(urlString: urlString)
+        performRequest(with: urlString)
     }
     
-    func performRequest(urlString: String) {
+    func performRequest(with urlString: String) {
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, response, error in
                 if  error != nil {
-                    print(error!)
+                    //print(error!)
+                    self.delegate?.didFailWithError(error: error!)
                     return
                 }
                 if let safeData = data {
-                    if let weather = self.parseJSON(weatherData: safeData) {
+                    if let weather = self.parseJSON(safeData) {
                         //let weatherVC = WeatherViewController()
                         //weatherVC.didUpdateWeather(weatherModel: weather)
-                        self.delegate?.didUpdateWeather(weatherModel: weather)
+                        self.delegate?.didUpdateWeather(self, weatherModel: weather)
                         
                     }
                 }
@@ -44,7 +46,7 @@ struct WeatherManager {
         }
     }
     
-    func parseJSON(weatherData: Data) -> WeatherModel?{
+    func parseJSON(_ weatherData: Data) -> WeatherModel?{
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
@@ -59,7 +61,8 @@ struct WeatherManager {
             
             
         }catch {
-            print(error)
+            //print(error)
+            delegate?.didFailWithError(error: error)
             return nil
         }
         

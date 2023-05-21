@@ -30,8 +30,12 @@ class WeatherViewController: UIViewController, WeatherManagerDelegate {
 
     }
     
-    func didUpdateWeather(weatherModel: WeatherModel) {
+    func didUpdateWeather(_ weatherManager: WeatherManager, weatherModel: WeatherModel) {
         print(weatherModel.temperatureString)
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
     }
     
 }
