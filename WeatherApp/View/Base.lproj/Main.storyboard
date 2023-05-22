@@ -29,6 +29,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="location.circle.fill" catalog="system">
                                     <color key="baseForegroundColor" name="weatherColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="currentLocationPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tDY-ak-XsY"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="right" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="yoX-wM-l5r">
                                 <rect key="frame" x="82" y="55" width="244" height="40"/>
@@ -65,7 +68,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoK-FK-mDy">
-                                <rect key="frame" x="211" y="383" width="182" height="36"/>
+                                <rect key="frame" x="95" y="383" width="298" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="z8h-iO-HAT"/>
                                 </constraints>
@@ -111,7 +114,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yoX-wM-l5r" secondAttribute="trailing" constant="67" id="s7N-xN-dOb"/>
                             <constraint firstItem="Ei9-d3-hH8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="thg-RW-y3J"/>
                             <constraint firstItem="Gse-QC-h9g" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="wOI-yB-2Yt"/>
-                            <constraint firstItem="aoK-FK-mDy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="211" id="yS9-Uy-bL6"/>
+                            <constraint firstItem="aoK-FK-mDy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="95" id="yS9-Uy-bL6"/>
                         </constraints>
                     </view>
                     <connections>
